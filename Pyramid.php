@@ -17,13 +17,14 @@ for ($i = 1; $i <= $n; $i++) {
     echo "<br>";
 }
 //倒三角
+echo "<br>";
 $n = 10;
-for ($i = 1; $i <= $n; $i++) {
-    for ($j=1; $j < $n * 2 - 1;$j++) {
-        echo "*";
-    }
+for ($i = $n; $i>=1; $i--) {
     for ($k = 1; $k <= $n - $i; $k++) {
         echo "&nbsp";
+    }
+    for ($j = 1; $j <= $i * 2 - 1; $j++ ) {
+        echo "*";
     }
     echo "<br>";
 }
