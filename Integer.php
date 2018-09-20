@@ -38,6 +38,7 @@ var_dump($array);
 	//转化为对象
 	$obj = array('1','foo');
 
+
 	var_dump(isset($obj->{'1'}));//outputs 'bool(false)'
 	echo "<br>";
 	var_dump(key($obj)); //outputs 'int(1)'
