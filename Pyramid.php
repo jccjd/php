@@ -26,11 +26,16 @@ for ($i = 1; $i <= $n; $i++) {
         if ($i == 1 || $i == $n) {
             echo "*";
         } else {
-            if ($j == )
+            if ($j == 1 || $j == $i * 2 -1) {
+                echo "*";
+            } else {
+                echo "&nbsp";
+            }
         }
 
 
     }
+    echo "<br>";
 }
 
 //倒三角
