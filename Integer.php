@@ -70,6 +70,4 @@ var_dump($array);
 	echo "<br>";
 	print_r(implode(',', $array));
     //test 更换文件地址
-echo "<br>"
-
-?>
+echo "<br>";
