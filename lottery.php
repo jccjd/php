@@ -1,3 +1,14 @@
+<!DOCTYPE html>
+<html lang="cn">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<form method="get",action="">
+    <input style="margin-left: 600px;margin-top: 200px; width: 100px;height:50px;font-size: 25px" type="submit" value="抽奖" name="draw">
+</form>
 <?php
 /**
  * Created by PhpStorm.
@@ -5,6 +16,7 @@
  * Date: 2018/9/29
  * Time: 21:34
  */
+
 $arr = array(
     ["kk" => "001","ll" => "李四a"],
     ["kk" => "002","ll" => "李四d"],
