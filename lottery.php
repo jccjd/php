@@ -30,12 +30,6 @@ $arr = array(
 );
 foreach ($arr as $v) {
     echo "<p>";
-    echo "学号：".$v["kk"].",姓名：".$v['xm'];
+    echo "学号：".$v["kk"].",姓名：".$v['ll'];
     echo "</p>";
-    if ($_GET['抽奖']='draw') {
-        $v = $arr[array_rand($arr,1)];
-        echo "<h2 style='margin-left: 400px;margin-top: -40% '>";
-        echo '恭喜学号为：'.$v["xh"].'，姓名为：'.$v["xm"].'的同学中奖';
-        echo "</h2>";
-    }
 }
