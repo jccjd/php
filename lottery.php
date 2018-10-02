@@ -36,5 +36,5 @@ foreach ($arr as $v) {
 if ($_GET['抽奖']="draw")
 {
     $v=$arr[array_rand($arr,1)];
-    echo '恭喜学号为：'.$v["kk"].'，姓名为：'.$v["ll"].'的同学中奖';
+    echo '恭喜学号为:'.$v["kk"].'，姓名为：'.$v["ll"].'的同学中奖';
 }
