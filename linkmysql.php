@@ -5,4 +5,7 @@
  * Date: 2018/10/2
  * Time: 11:12
  */
-$_GET=pwd;
+function show() {
+    echo "show....";
+}
+show();
