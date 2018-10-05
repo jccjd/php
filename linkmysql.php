@@ -9,3 +9,5 @@ function show() {
     echo "show....";
 }
 show();
+
+$arr  = $array(1,2,3);
