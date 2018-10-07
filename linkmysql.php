@@ -11,3 +11,7 @@ function show() {
 echo "bbbb";
 show();
 
+$arr = array(1,2,3);
+echo "<pre>";
+print_r($arr);
+echo "</pre>";
