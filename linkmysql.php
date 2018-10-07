@@ -8,6 +8,6 @@
 function show() {
     echo "show....";
 }
+echo "bbbb";
 show();
 
-$arr  = $array(1,2,3);
