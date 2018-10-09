@@ -30,3 +30,7 @@ class b extends a{
 }
 $b = new b();
 echo $b->print_data();
+$test = 'aaaaaa';
+$abc = &$test;
+unset($test);
+echo $abc;
