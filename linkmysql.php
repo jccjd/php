@@ -33,4 +33,5 @@ echo $b->print_data();
 $test = 'aaaaaa';
 $abc = &$test;
 unset($test);
+echo "<br>";
 echo $abc;
