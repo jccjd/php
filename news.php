@@ -1,3 +1,6 @@
+<html>
+<meta charset="utf8">
+</html>
 <?php
 /**
  * Created by PhpStorm.
@@ -14,6 +17,9 @@ $sql = "select * from newsInfo order by newsDateTime desc,id desc";
 $res = mysql_query($sql);
 while ($row = mysql_fetch_assoc($res)) {
     # code...
-        echo @date("Y-m-d",strtotime($rom['newsDateTime']));
-        echo $row["newsTitle"];
+    echo "<ul>";
+
+    echo "<li> ".@date("Y-m-d",strtotime($rom['newsDateTime']))."</li>";
+    echo"<a href='array.php' >". $row["newsTitle"]."</a>";
+    echo "</ul>";
 }
