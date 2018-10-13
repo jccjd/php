@@ -25,15 +25,18 @@
  * Time: 22:20
  */
 $id = $_GET['id'];
-mysql_connect('127.0.0.1','root','root');
+mysql_connect('127.0.0.10','root','root');
 mysql_select_db('demo');
+mysql_query('set names utf8');
 
-$sql='update newsInfo set newsCnt + 1 where id= $id';
-$res = mysql_query($sql);
-$sql = 'select * from newsInfo where id = $id';
-$res = mysql_query($sql);
-$row = mysql_fetch_assoc($res);
+
+$sql="update newsInfo set newsCnt=newsCnt+1 where id=$id";
+$res=mysql_query($sql);
+
+$sql="select * from newsInfo where id=$id";
+$res=mysql_query($sql);
+$row=mysql_fetch_assoc($res);
 echo "<h1>".$row['newsTitle']."</h1>";
 echo "<p><span>".$row['newsAuthor']."</span>"."<span class='little'>时间".@date("Y-m-d",strtotime($row['newsDateTime']))."</span>".
-    "<span class='little'>浏览量：".$row['newCnt']."</span>";
+    "<span class='little'>浏览量：".$row['newsCnt']."</span><br>";
 echo $row['newsContent'];
