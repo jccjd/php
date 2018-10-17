@@ -6,7 +6,7 @@
 </head>
 <body>
 
-<form method="get",action="">
+<form method="get">
     <input style="margin-left: 600px;margin-top: 200px; width: 100px;height:50px;font-size: 25px" type="submit" value="抽奖" name="draw">
 </form>
 <?php
