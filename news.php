@@ -29,6 +29,10 @@ mysql_query("set names utf8");
 
 $sql = "select * from newsInfo order by newsDateTime desc";
 $res = mysql_query($sql);
+//总行数
+$totsql = "select count(*) from t2";
+$totarr = mysql_fetch_row(mysql_query($totsql));
+
 while ($row = mysql_fetch_assoc($res)) {
     # code...
     echo "<ul><li>";
