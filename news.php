@@ -29,10 +29,12 @@ mysql_query("set names utf8");
 
 $sql = "select * from newsInfo order by newsDateTime desc";
 $res = mysql_query($sql);
+$length = 10;
+$pagenum = $_GET['page']?$_GET['page']:1;
 //总行数
 $totsql = "select count(*) from t2";
 $totarr = mysql_fetch_row(mysql_query($totsql));
-
+$pagetot = ceil($totarr[0]/length);
 while ($row = mysql_fetch_assoc($res)) {
     # code...
     echo "<ul><li>";
