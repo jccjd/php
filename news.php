@@ -27,14 +27,11 @@ mysql_connect('127.0.0.1','root','root');
 mysql_select_db('demo');
 mysql_query("set names utf8");
 
-$sql = "select * from newsInfo order by newsDateTime desc";
+//$length = 4;
+//$pagenum = $_GET['page']?$_GET['page']:1;
+
+$sql = "select * from newsInfo order by id limit 0,4";
 $res = mysql_query($sql);
-$length = 10;
-$pagenum = $_GET['page']?$_GET['page']:1;
-//总行数
-$totsql = "select count(*) from t2";
-$totarr = mysql_fetch_row(mysql_query($totsql));
-$pagetot = ceil($totarr[0]/length);
 while ($row = mysql_fetch_assoc($res)) {
     # code...
     echo "<ul><li>";
