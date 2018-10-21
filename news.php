@@ -11,7 +11,6 @@
     ul li a{
         text-decoration: none;
         color: #123456;
-
     }
     li span{float: right;}
 </style>
@@ -27,9 +26,9 @@ mysql_connect('127.0.0.1','root','root');
 mysql_select_db('demo');
 mysql_query("set names utf8");
 
-//$length = 4;
-//$pagenum = $_GET['page']?$_GET['page']:1;
-
+$length = 4;
+$pagenum = $_GET['page']?$_GET['page']:1;
+offset =
 $sql = "select * from newsInfo order by id limit 0,4";
 $res = mysql_query($sql);
 while ($row = mysql_fetch_assoc($res)) {
