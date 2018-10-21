@@ -45,6 +45,16 @@ if ($pagenum >= $pagetot) {
 }
 $sql = "select * from newsInfo order by id limit {$offset},{$length}";
 $res = mysql_query($sql);
+echo "<form action='' method='get'>
+    请输入搜索信息：<input type='text' name='keywords'>
+    <input type='submit' value='搜索'>
+</form>";
+
+$keywords = $_GET['keywords'];
+$data = explode(' ',$keywords);
+foreach ($data as $v) {
+    $sql = "select * from newsInfo where newsTitle like '%$v%' or order by newsDateTime desc ,id desc";
+}
 while ($row = mysql_fetch_assoc($res)) {
     # code...
     echo "<ul><li>";
@@ -52,6 +62,7 @@ while ($row = mysql_fetch_assoc($res)) {
     echo "<a href ='detil.php?id={$row['id']}'>".$row["newsTitle"]."</a>";
     echo "</li></ul>";
 }
+//上页下页
 $prevpage =$pagenum-1;
 $nextpage =$pagenum+1;
 echo "<a href='news.php?page={$prevpage}'>上一页</a>|<a href='news.php?page={$nextpage}'>下一页</a>";
