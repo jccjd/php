@@ -12,6 +12,10 @@
         text-decoration: none;
         color: #123456;
     }
+    a{
+        text-decoration: none;
+        color: #123456;
+    }
     li span{float: right;}
 
 
@@ -34,7 +38,11 @@ $offset = ($pagenum - 1) * $length;
 
 //限制最大页数
 $totsql = "select count(*) from newsInfo";
-
+$totarr = mysql_fetch_row(mysql_query($totsql));
+$pagetot = ceil($totarr[0]/$length);
+if ($pagenum >= $pagetot) {
+    $pagenum =$pagetot;
+}
 $sql = "select * from newsInfo order by id limit {$offset},{$length}";
 $res = mysql_query($sql);
 while ($row = mysql_fetch_assoc($res)) {
