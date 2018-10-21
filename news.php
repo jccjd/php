@@ -28,8 +28,9 @@ mysql_query("set names utf8");
 
 $length = 4;
 $pagenum = $_GET['page']?$_GET['page']:1;
-offset =
-$sql = "select * from newsInfo order by id limit 0,4";
+$offset = ($pagenum - 1) * $length;
+
+$sql = "select * from newsInfo order by id limit {$offset},{$length}";
 $res = mysql_query($sql);
 while ($row = mysql_fetch_assoc($res)) {
     # code...
@@ -37,4 +38,8 @@ while ($row = mysql_fetch_assoc($res)) {
     echo "<span>".@date("Y-m-d",strtotime($rom['newsDateTime']))."</span>";
     echo "<a href ='detil.php?id={$row['id']}'>".$row["newsTitle"]."</a>";
     echo "</li></ul>";
+    $prevpage =$pagenum-1;
+    $nextpage =$pagenum+1;
+    echo "<h2><a href='test3.php?page={$prevpage}'>上一页</a>|<a href='test3.php?page={$nextpage}'>下一页</a></h2>";
+
 }
