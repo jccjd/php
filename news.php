@@ -13,6 +13,8 @@
         color: #123456;
     }
     li span{float: right;}
+
+
 </style>
 </html>
 <?php
@@ -30,6 +32,9 @@ $length = 4;
 $pagenum = $_GET['page']?$_GET['page']:1;
 $offset = ($pagenum - 1) * $length;
 
+//限制最大页数
+$totsql = "select count(*) from newsInfo";
+
 $sql = "select * from newsInfo order by id limit {$offset},{$length}";
 $res = mysql_query($sql);
 while ($row = mysql_fetch_assoc($res)) {
@@ -38,8 +43,7 @@ while ($row = mysql_fetch_assoc($res)) {
     echo "<span>".@date("Y-m-d",strtotime($rom['newsDateTime']))."</span>";
     echo "<a href ='detil.php?id={$row['id']}'>".$row["newsTitle"]."</a>";
     echo "</li></ul>";
-    $prevpage =$pagenum-1;
-    $nextpage =$pagenum+1;
-    echo "<h2><a href='test3.php?page={$prevpage}'>上一页</a>|<a href='test3.php?page={$nextpage}'>下一页</a></h2>";
-
 }
+$prevpage =$pagenum-1;
+$nextpage =$pagenum+1;
+echo "<a href='news.php?page={$prevpage}'>上一页</a>|<a href='news.php?page={$nextpage}'>下一页</a>";
