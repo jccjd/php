@@ -20,6 +20,12 @@
 
 
 </style>
+<body>
+<form method="get">
+    <input type="submit" value="搜索">
+    <input type="text" name="search">
+</form>
+</body>
 </html>
 <?php
 /**
@@ -45,16 +51,6 @@ if ($pagenum >= $pagetot) {
 }
 $sql = "select * from newsInfo order by id limit {$offset},{$length}";
 $res = mysql_query($sql);
-echo "<form action='' method='get'>
-    请输入搜索信息：<input type='text' name='keywords'>
-    <input type='submit' value='搜索'>
-</form>";
-
-$keywords = $_GET['keywords'];
-$data = explode(' ',$keywords);
-foreach ($data as $v) {
-    $sql = "select * from newsInfo where newsTitle like '%$v%' or order by newsDateTime desc ,id desc";
-}
 while ($row = mysql_fetch_assoc($res)) {
     # code...
     echo "<ul><li>";
