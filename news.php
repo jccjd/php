@@ -56,6 +56,7 @@ while ($row = mysql_fetch_assoc($res)) {
     echo "<ul><li>";
     echo "<span>".@date("Y-m-d",strtotime($rom['newsDateTime']))."</span>";
     echo "<a href ='detil.php?id={$row['id']}'>".$row["newsTitle"]."</a>";
+
     echo "</li></ul>";
 }
 //上页下页
