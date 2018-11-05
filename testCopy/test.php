@@ -27,3 +27,13 @@ class People {
 }
 $p1 = new People();
 $p2 = $p1;
+echo $p1->getName();
+echo $p2->getName();
+//p2改名
+$p2->setName('李四');
+echo $p1->getName();
+echo $p2->getName();
+//p1改名
+$p1->setName('王五');
+echo $p1->getName();
+echo $p2->getName();
