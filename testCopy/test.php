@@ -26,7 +26,7 @@ class People {
     }
 }
 $p1 = new People();
-$p2 = $p1;
+$p2 = clone $p1;
 echo $p1->getName();
 echo $p2->getName();
 //p2改名
