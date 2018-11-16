@@ -41,8 +41,12 @@ if (
             echo $_FILES['file']['name']."该文件存在";
         } else {
             //如果upload 目录下没有就可以上传到这里了
-            move_uploaded_file($_FILES['file']['tmp_name'],"upload/".$_FILES['file']['name']);
-            echo '文件地址：'.'upload/'.$_FILES['file']['name'];
+//            move_uploaded_file($_FILES['file']['tmp_name'],"upload/".$_FILES['file']['name']);
+//            echo '文件地址：'.'upload/'.$_FILES['file']['name'];
+            $new_file = round(1000,9000).".jpg";
+            $filename = 'upload/'.$new_file;
+            move_uploaded_file($_FILES['file']['tmp_name'],$filename);
+
         }
     }
 } else {
