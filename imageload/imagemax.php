@@ -82,6 +82,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST')
     $pinfo=pathinfo($file["name"]);
     $ftype=$pinfo['extension'];
     $destination = $destination_folder.time().".".$ftype;
+    echo $destination;
     if (file_exists($destination) && $overwrite != true)
     {
         echo "同名文件已经存在了";
