@@ -16,11 +16,6 @@
     <title>图片上传</title>
 </head>
 <body>
-<form name="upform" method="post" enctype="multipart/form-data">
-    上传文件：<input name="upfile" type="file">
-    <input type="submit" value="上传">
-    只允许<?=implode(', ',$uptypes)?>类型图片
-</form>
 </body>
 </html>
 <?php
@@ -60,7 +55,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     //文件后缀
     $fileExt = substr($file['name'],strripos($file['name'],'.'));
     $newname = date('YmdHis',time()).rand(1000,9999).$fileExt;
-    echo $newname;
     if(!move_uploaded_file($filename,$path.$newname)) {
         echo "复制文件出错";
         exit;
