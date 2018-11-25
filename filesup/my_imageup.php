@@ -9,12 +9,7 @@
     $path = 'upload/';
     $waterstring = 'hello';
     $imagepreviewsize = 1/2;
-/**
- * Created by PhpStorm.
- * User: lenovo
- * Date: 2018/11/22
- * Time: 19:35
- */
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     //判断图片是否存在
     if (!is_uploaded_file($_FILES['upfile']['tmp_name'])) {
@@ -44,11 +39,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     //复制文件
     //文件后缀
     $fileExt = substr($file['name'],strripos($file['name'],'.'));
+
     $newname = date('YmdHis',time()).rand(1000,9999).$fileExt;
     if(!move_uploaded_file($filename,$path.$newname)) {
         echo "复制文件出错";
         exit;
     }
+
+    //图片加水印
     $iinfo = getimagesize($path.$newname,$iinfo);
     $nimage = imagecreatetruecolor($image_size[0],$image_size[1]);
     $white = imagecolorallocate($nimage,255,255,255);
