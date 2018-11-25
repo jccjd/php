@@ -9,16 +9,6 @@
     $path = 'upload/';
     $waterstring = 'hello';
     $imagepreviewsize = 1/2;
-?>
-<html>
-<meta charset="UTF-8">
-<head>
-    <title>图片上传</title>
-</head>
-<body>
-</body>
-</html>
-<?php
 /**
  * Created by PhpStorm.
  * User: lenovo
