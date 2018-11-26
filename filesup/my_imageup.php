@@ -20,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $file = $_FILES['upfile'];
     $filename = $file['tmp_name'];
     $image_size = getimagesize($filename);
-    $pinfo = pathinfo($file['name']);
+    print_r($image_size) ;
 
     //检查图片大小
     if ($max_file_size < $file['size']) {

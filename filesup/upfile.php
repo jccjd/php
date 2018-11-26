@@ -9,41 +9,50 @@
  * Time: 19:29
  */
 
-/*
- * 上传限制
- * */
+/*保存路径*/
+$path = "upload/";
+/*水印字符*/
+$waterstring = 'hello';
+/*图片预览比例*/
+$imagepreviewsize = 2;
 //允许上传的图片的后缀
 $allowedExts = array('gif','jpeg','jpg','png');
 
-$temp = explode('.',$_FILES['file']['name']);
+
+$file = $_FILES['file'];
+$filename = $file['tmp_name'];
+$image_size = getimagesize($filename);
+
 //获取文件后缀
+$temp = explode('.',$file['name']);
 $extension = end($temp);
+
 /*判断文件大小和类型是否匹配*/
-if ( ($_FILES['file']['size'] < 204800) && in_array($extension,$allowedExts)) {
+if ( ($file['size'] < 204800) && in_array($extension,$allowedExts)) {
 
-    if ($_FILES['file']['error'] > 0) {
+    if ($file['error'] > 0) {
 
-        echo "错误：".$_FILES['file']['error'];
+        echo "错误：".$file['error'];
 
     } else {
 
-        echo '文件名：'.$_FILES['file']['name']."<br>";
-        echo '文件类型：'.$_FILES['file']['type']."<br>";
-        echo '文件大小：'.$_FILES['file']['size']."<br>";
-        echo '文件存储位置：'.$_FILES['file']['tmp_name']."<br>";
+        echo '文件名：'.$file['name']."<br>";
+        echo '文件类型：'.$file['type']."<br>";
+        echo '文件大小：'.$file['size']."<br>";
+        echo '文件存储位置：'.$file['tmp_name']."<br>";
 
         /*判断当前目录下的upload 目录是否存在该文件
           如果没有该目录，创建之
         */
-        if (file_exists("upload/".$_FILES['file']['name'])) {
-            echo $_FILES['file']['name']."该文件存在";
+        if (file_exists("upload/".$file['name'])) {
+            echo $file['name']."该文件存在";
         } else {
             //如果upload 目录下没有就可以上传到这里了
 //            move_uploaded_file($_FILES['file']['tmp_name'],"upload/".$_FILES['file']['name']);
 //            echo '文件地址：'.'upload/'.$_FILES['file']['name'];
-            $new_file = date("YmdHis").rand(1000,9000).".jpg";
-            $filename = 'upload/'.$new_file;
-            move_uploaded_file($_FILES['file']['tmp_name'],$filename);
+            $newname = date("YmdHis").rand(1000,9000).".jpg";
+            $newfilename = 'upload/'.$newname;
+            move_uploaded_file($_FILES['file']['tmp_name'],$newfilename);
 
         }
     }
