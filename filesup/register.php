@@ -13,7 +13,7 @@
     <input type="submit" value="注册">
 </form>
 <?php
- require_once 'my_imageup.php';
+ require_once 'imgwater.php';
     if (isset($_POST['userName'])) {
         $data = $_POST;
         require_once 'conn.php';
