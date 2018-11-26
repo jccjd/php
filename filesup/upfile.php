@@ -12,23 +12,21 @@
 /*
  * 上传限制
  * */
-//允许上传的图片有后缀
+//允许上传的图片的后缀
 $allowedExts = array('gif','jpeg','jpg','png');
+
 $temp = explode('.',$_FILES['file']['name']);
 //获取文件后缀
 $extension = end($temp);
-if (
-    (
-        ( $_FILES['file']['type'] == 'image/gif') ||
-        ( $_FILES['file']['type'] == 'image/jpg') ||
-        ( $_FILES['file']['type'] == 'image/png')
-    )
-    && ($_FILES['file']['size'] < 204800)
-    && in_array($extension,$allowedExts)) {
+/*判断文件大小和类型是否匹配*/
+if ( ($_FILES['file']['size'] < 204800) && in_array($extension,$allowedExts)) {
 
     if ($_FILES['file']['error'] > 0) {
+
         echo "错误：".$_FILES['file']['error'];
+
     } else {
+
         echo '文件名：'.$_FILES['file']['name']."<br>";
         echo '文件类型：'.$_FILES['file']['type']."<br>";
         echo '文件大小：'.$_FILES['file']['size']."<br>";
@@ -43,7 +41,7 @@ if (
             //如果upload 目录下没有就可以上传到这里了
 //            move_uploaded_file($_FILES['file']['tmp_name'],"upload/".$_FILES['file']['name']);
 //            echo '文件地址：'.'upload/'.$_FILES['file']['name'];
-            $new_file = round(1000,9000).".jpg";
+            $new_file = date("YmdHis").rand(1000,9000).".jpg";
             $filename = 'upload/'.$new_file;
             move_uploaded_file($_FILES['file']['tmp_name'],$filename);
 
