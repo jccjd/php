@@ -4,6 +4,8 @@
  * User: lenovo
  * Date: 2018/11/26
  * Time: 21:02
+ * 给图片增加水印
+ * 从upfile.php得到$newname来给其加水印
  */
 require "upfile.php";
 //图片加水印

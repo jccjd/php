@@ -1,12 +1,11 @@
-<html>
-<meta charset="UTF-8">
-</html>
 <?php
 /**
  * Created by PhpStorm.
  * User: lenovo
  * Date: 2018/11/14
  * Time: 19:29
+ * 上传图片将其保存到本地的upload/里
+ * 并生成的新名字交由imgwater.php使用
  */
 
 /*保存路径*/
