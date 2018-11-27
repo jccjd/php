@@ -8,12 +8,10 @@
     用户名： <input type="text" id="username" name="username"><br>
     密 码： <input type="password" id="password" name="password"><br>
     验证码： <input type="text" id="code" name="code"><img src="idcode.php">
-    <div id="error_message style=" color:red"></div>
+    <div id="error_message style=" color:red
+    "></div>
     <input type="submit" id="login" name="login" value="登录">
-
-
 </form>
-
 </body>
 </html>
 <?php
@@ -24,3 +22,51 @@
  * Time: 19:39
  * 验证码
  */
+$img_w = 70;
+$img_h = 20;
+$code_len = 5;
+$code_font = 5;
+/*需要用到的数字或字母*/
+$code = array_merge(range('A', 'Z'), range('a', 'z'), range(1, 9));
+/*验证码对应的$code的键值*/
+$keyCode = array_rand($code, $code_font);
+if ($code_len == 1) {
+    $keyCode = array($keyCode);
+}
+//洗牌打乱
+shuffle($keyCode);
+$verifyCode = "";
+foreach ($keyCode as $key) {
+    //真正的验证码
+    $verifyCode .= $code[$key];
+}
+session_start();
+$_SESSION['verifycode'] = $verifyCode;
+//生成画布
+$img = imagecreatetruecolor($img_w, $img_h);
+//画布颜色
+$bg_color = imagecolorallocate($img, 123, 0, 24);
+imagefill($img, 0, 0, $bg_color);
+//设置干扰点
+for ($i = 0; $i <= 300; $i++) {
+    //点的随机颜色
+    $color = imagecolorallocate($img, mt_rand(0, 255), mt_rand(0, 255), mt_rand(0, 255));
+    /*加点*/
+    imagesetpixel($img, mt_rand(0, $img_w), mt_rand(0, $img_h), $color);
+}
+/*为验证码加边框*/
+$color1 = imagecolorallocate($img, 23, 25, 13);
+imagerectangle($img, 0, 0, $img_w - 1, $img_h - 1);
+/*字符串颜色*/
+$color2 = imagecolorallocate($img, mt_rand(0, 100), mt_rand(0, 100), mt_rand(0, 100));
+$font_w = imagefontwidth($code_font);
+$font_h = imagefontheight($code_font);
+//验证码总长度
+$code_sum_w = $font_w * $code_len;
+//写入验证码
+imagestring($img, $code_font, ($img_w - $code_sum_w) / 2,($img_h - $font_h) / 2,$verifyCode,$color2);
+/*输入验证码图片格式*/
+header('Content-type:image/png');
+imagepng($img);
+imagedestroy($img);
+
