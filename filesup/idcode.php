@@ -1,19 +1,3 @@
-<html xmlns:color="http://www.w3.org/1999/xhtml">
-<head>
-    <meta charset="UTF-8">
-    <title>验证码</title>
-</head>
-<body>
-<form action="check.php" method="post">
-    用户名： <input type="text" id="username" name="username"><br>
-    密 码： <input type="password" id="password" name="password"><br>
-    验证码： <input type="text" id="code" name="code"><img src="idcode.php">
-    <div id="error_message style=" color:red
-    "></div>
-    <input type="submit" id="login" name="login" value="登录">
-</form>
-</body>
-</html>
 <?php
 /**
  * Created by PhpStorm.
@@ -29,7 +13,7 @@ $code_font = 5;
 /*需要用到的数字或字母*/
 $code = array_merge(range('A', 'Z'), range('a', 'z'), range(1, 9));
 /*验证码对应的$code的键值*/
-$keyCode = array_rand($code, $code_font);
+$keyCode = array_rand($code, $code_len);
 if ($code_len == 1) {
     $keyCode = array($keyCode);
 }
@@ -55,8 +39,8 @@ for ($i = 0; $i <= 300; $i++) {
     imagesetpixel($img, mt_rand(0, $img_w), mt_rand(0, $img_h), $color);
 }
 /*为验证码加边框*/
-$color1 = imagecolorallocate($img, 23, 25, 13);
-imagerectangle($img, 0, 0, $img_w - 1, $img_h - 1);
+$color1 = imagecolorallocate($img, 0, 200,0 );
+imagerectangle($img, 0, 0, $img_w - 1, $img_h - 1,$color1);
 /*字符串颜色*/
 $color2 = imagecolorallocate($img, mt_rand(0, 100), mt_rand(0, 100), mt_rand(0, 100));
 $font_w = imagefontwidth($code_font);
