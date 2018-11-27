@@ -55,3 +55,4 @@ imagedestroy($simage);
 echo "<br>图片预览:<br>";
 echo "<img src=\"".$path.$newname."\" width=".($image_size[0]*$imagepreviewsize)." height=".($image_size[1]*$imagepreviewsize);
 echo " alt=\"图片预览:\r文件名:".$path.$newname."\r上传时间:\">";
+

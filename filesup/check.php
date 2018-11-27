@@ -10,7 +10,7 @@ if (empty($_POST)) {
     die("没有提交表单");
 
 } else {
-    $code = isset($_POST['code'])?trim($_POST['code']):'';
+    $code = isset($_POST['code']) ? trim($_POST['code']) : '';
 
 }
 session_start();
@@ -25,4 +25,4 @@ if (strtolower($_SESSION['verifycode']) == strtolower($code)) {
     echo "验证码错误";
 }
 unset($_SESSION['verifycode']);
-header('refresh:3;url=idcode.php');
+header('refresh:3;url=longin.html');
