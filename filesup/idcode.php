@@ -41,7 +41,6 @@ for ($i = 0; $i <= 300; $i++) {
 }
 
 /*为验证码加边框*/
-
 $border_color = imagecolorallocate($img, 0, 200,0 );
 imagerectangle($img, 0, 0, $img_w - 1, $img_h - 1,$border_color);
 
