@@ -14,8 +14,6 @@ shuffle($keyCode);
 
 $verifyCode = "";
 foreach ($keyCode as $key) {
-    print "key->".$key;echo '<br>';
     $verifyCode .= $code[$key];
-//    print $code[$key];echo '<br>';
 }
 print_r($verifyCode);
