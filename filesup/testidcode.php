@@ -22,7 +22,7 @@ $img = imagecreatetruecolor(100,40);
 $bg_color = imagecolorallocate($img, 100,100,100);
 imagefill($img,0,0,$bg_color);
 //设置干扰点
-for ($i = 0; $i <= 300; $i++) {
+for ($i = 0; $i <= 20; $i++) {
     //点的随机颜色
     $color = imagecolorallocate($img, mt_rand(0, 255), mt_rand(0, 255), mt_rand(0, 255));
     /*加点*/
