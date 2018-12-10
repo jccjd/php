@@ -42,3 +42,9 @@ imagestring($img,5,30, 13,$verifyCode,$textcolor);
 header('Content-type: image/png');
 imagepng($img);
 
+
+
+
+
+
+
