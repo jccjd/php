@@ -25,15 +25,13 @@ class People {
 /**
  * 同学类
  */
+
 class Classmate {
     public $name ="王五";
 }
+
 $p1 = new People();
 $p2 = json_encode($p1);
 $p2 = json_decode($p2);
 
-
 echo $p1->mate->name;
-
-
-
