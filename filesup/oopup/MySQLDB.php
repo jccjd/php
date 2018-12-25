@@ -71,9 +71,101 @@ class MySQLDB {
      * */
     private function connectServer() {
         $host = $this->dbConfig['host'];
-        $_port = $this->dbConfig['port'];
+        $port = $this->dbConfig['port'];
         $user = $this->dbConfig['user'];
         $pwd = $this->dbConfig['pwd'];
-
+        //连接数据库服务器
+        if ($link = mysql_connect("$host:$port",$user, $pwd)) {
+            $this->link = $link;
+        } else {
+            die("数据库连接服务器失败，请确认信息".mysql_error());
+        }
+    }
+    /*设置连接字符集
+     * */
+    private function setCharset() {
+        $sql = "set names {$this->dbConfig['charset']}";
+        $this->query($sql);
+    }
+    /*选择默认数据库*/
+    private function selectDefaultDb() {
+        /*判断 $this->dbconfig['dbname']是否为空， 为空表示不需要选择数据库*/
+        if ($this->dbConfig['dbname'] == '') {
+            return;
+        }
+        $sql = "use '{$this->dbConfig['dbname']}'";
+        $this->query($sql);
+    }
+    /*
+     * 执行sql的方法
+     *@param string $sql
+     * @return mixed 查询语句返回结果集，非查询语句返回true
+     * */
+    public function query($sql) {
+        if ($result = mysql_query($sql,$this->link)) {
+            return $result;
+        } else {
+            echo 'sql执行失败<br>';
+            echo '错误的sql为,'.$sql.'<br>';
+            echo '错误的信息为：'.mysql_errno($this->link).'<br>';
+            echo '错误的代码|为：'.mysql_error($this->link).'<br>';
+            die;
+        }
+    }
+    /*查询所有记录
+      *@param string $sql 待执行的查询类的SQL
+     * @return array 二维数组
+     * */
+    public function fetchAll($sql) {
+        if ($result = $this->query($sql)) {
+            $rows = array();
+            while ($row = mysql_fetch_array($result,MYSQL_ASSOC)) {
+                $rows[] = $row;
+            }
+            mysql_free_result($result);
+            return $rows;
+        } else {
+            return false;
+        }
+    }
+    /*
+     * 查询单条记录
+     * @param string $sql 待执行的查询类的SQL
+     * @return array 一维数组
+     * */
+    public function fetchRow($sql) {
+        if ($result = $this->query($sql)) {
+            $row = mysql_fetch_array($result,MYSQL_ASSOC);
+            return $row;
+        } else {
+            return false;
+        }
+    }
+    /*
+     * 查询单个数据
+     * @param string $sql 待执行的查询类的SQL
+     * @return string 查询到的数据
+     * */
+    public function fetchColumn($sql) {
+        if ($result = $this->query($sql)) {
+            if ($row = mysql_fetch_array($result,MYSQL_NUM)) {
+                return $row[0];
+            } else {
+                return false;
+            }
+        }
+    }
+    /*
+     * mysql 转义字符串
+     *
+     * */
+    public function escapeString($data) {
+        return mysql_real_escape_string($data,$this->link);
+    }
+    /*
+     * 获得当前最新的自动增长ID
+     * */
+    public function lastInsertId() {
+        return mysqli_insert_id($this->link);
     }
 }
