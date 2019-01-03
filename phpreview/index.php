@@ -13,7 +13,7 @@
     }
 
     a:link {
-        color: antiquewhite;
+        color:blueviolet;
     }
 
     li span {
@@ -26,7 +26,6 @@
     }
 </style>
 <body>
-
 </body>
 </html>
 <?php
@@ -39,11 +38,11 @@
 require 'conn.php';
 $sql = 'select * from newsInfo';
 $res = mysql_query($sql);
-while ($eow = mysql_fetch_assoc($res)) {
+while ($row = mysql_fetch_assoc($res)) {
     echo '<ul><li>';
-    echo "<a href='news.php?id={$row['id']}'>".$row['newsTitle']."</a>";
-    echo "<span>".date('y-m-d',strtotime($row['newsDateTime']))."</span>";
-    echo "<a href='test1.php?id{$row['id']}' class='a'>".删除."</a>";
-    echo "<a href='test1.php?id{$row['id']}' class='a'>".修改."</a>";
+    echo "<a href='news.php?id={$row['id']}'>" . $row['newsTitle'] . "</a>";
+    echo "<span>" . date('y-m-d', strtotime($row['newsDateTime'])) . "</span>";
+    echo "<a href='test1.php?id{$row['id']}' class='a'>" ."删除" . "</a>";
+    echo "<a href='test1.php?id{$row['id']}' class='a'>" . "修改" . "</a>";
     echo '</li></ul>';
 }
