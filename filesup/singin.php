@@ -10,7 +10,7 @@
     <span>密 码：</span><input type="password" name="userPwd"><br><br>
     上传图片：<input name="file" type="file">
     <input type="submit" value="注册">
-</form>
+</form>ll
 <?php
  require_once 'imgwater.php';
     if (isset($_POST['userName'])) {
