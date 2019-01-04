@@ -52,7 +52,6 @@ if ( ($file['size'] < 204800) && in_array($extension,$allowedExts)) {
             $newname = date("YmdHis").rand(1000,9000).".jpg";
             $newfilename = 'upload/'.$newname;
             move_uploaded_file($_FILES['file']['tmp_name'],$newfilename);
-
         }
     }
 } else {
