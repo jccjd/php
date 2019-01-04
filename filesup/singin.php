@@ -9,7 +9,7 @@
 <form method="post" action="" enctype="multipart/form-data">
     <span>用户名：</span><input type="text" name="userName"><br>
     <span>密 码：</span><input type="password" name="userPwd"><br><br>
-    上传文件：<input name="file" type="file">
+    上传图片：<input name="file" type="file">
     <input type="submit" value="注册">
 </form>
 <?php
