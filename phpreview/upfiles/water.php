@@ -29,3 +29,4 @@ switch ($innfo[2]) {
 imagecopy($nimage,$simage,0,0,0,0,$image_size[0],$image_size[1]);
 imagefilledrectangle($nimage,1,$image_size[1]-15,80,$image_size[1],$white);
 imagestring($nimage,2,3,$image_size[1]-15,$watering,$black);
+
