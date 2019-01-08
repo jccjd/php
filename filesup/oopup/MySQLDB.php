@@ -34,6 +34,8 @@ class MySQLDB {
         }
         return self::$instance;
     }
+    private $link;
+    private static $instance;
 
     /**
      * 构造方法
