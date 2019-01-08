@@ -166,6 +166,6 @@ class MySQLDB {
      * 获得当前最新的自动增长ID
      * */
     public function lastInsertId() {
-        return mysqli_insert_id($this->link);
+        return mysql_insert_id($this->link);
     }
 }
