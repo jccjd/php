@@ -30,3 +30,20 @@ imagecopy($nimage,$simage,0,0,0,0,$image_size[0],$image_size[1]);
 imagefilledrectangle($nimage,1,$image_size[1]-15,80,$image_size[1],$white);
 imagestring($nimage,2,3,$image_size[1]-15,$watering,$black);
 
+switch ($innfo[2]) {
+    case 1:
+        imagejpeg($nimage,$path.$newname);
+        break;
+    case 2:
+        imagegif($nimage,$path.$newname);
+        break;
+    case 3:
+        imagepng($nimage,$path.$newname);
+        break;
+}
+//覆盖原上传文件
+imagedestroy($nimage);
+imagedestroy($simage);
+
+echo "<br>图片预览<br>";
+echo "<img src\"".$path.$newname."\" whidth=".($image_size[0]*2)." height=".($image_size[1]*2).">";

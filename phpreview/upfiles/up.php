@@ -31,9 +31,7 @@ if (($file['size'] < 204800) && in_array($extension, $allowedExts)) {
         if (!file_exists($path)) {
             mkdir($path);
         } else {
-            //如果upload 目录下没有就可以上传到这里了
-//            move_uploaded_file($_FILES['file']['tmp_name'],"upload/".$_FILES['file']['name']);
-//            echo '文件地址：'.'upload/'.$_FILES['file']['name'];
+
             $newname = date("YmdHis") . rand(1000, 9000) . ".jpg";
             $newfilename = 'upload/' . $newname;
             move_uploaded_file($_FILES['file']['tmp_name'], $newfilename);
