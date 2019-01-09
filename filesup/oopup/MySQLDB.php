@@ -34,25 +34,37 @@ class MySQLDB {
         }
         return self::$instance;
     }
-    private $link;
-    private static $instance;
+    private $link1;
+    private static $instance2;
+    public static function getInstance1($params = array()) {
+        if (!self::$instance2 instanceof self) {
+            self::$instance2 = new self($params);
+        }
+        return self::$instance2;
+    }
 
     /**
      * 构造方法
      * @param array  @params 关联数组
      */
-
-    public function __construct($params = array())
+    public function __construct($params =array())
     {
-        //初始化数据库连接信息
-        $this->inintAttr($params);
-        //连接数据库
+        //    //初始化数据库连接信息
+        //$this->inintAttr($params);
+        //    //连接数据库
+        //$this->connectServer();
+        //    //设置字符集
+        //$this->setCharset();
+        //    //选择默认数据库
+        //$this->selectDefaultDb();
+        $this->initArrt($params);
         $this->connectServer();
-        //设置字符集
         $this->setCharset();
-        //选择默认数据库
         $this->selectDefaultDb();
     }
+
+
+
     public function __destruct()
     {
         // TODO: Implement __destruct() method.
