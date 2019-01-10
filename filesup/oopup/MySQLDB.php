@@ -80,6 +80,7 @@ class MySQLDB {
         //初始化属性， 使用array_marge() 函数合并两个数组
 //        $this->dbConfig = array_merge($this->dbConfig,$params);
         $this->dbConfig =array_merge($this->dbConfig,$params);
+        $this->dbConfig = array_merge($this->dbConfig,$params);
     }
 
     /**
