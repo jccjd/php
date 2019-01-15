@@ -17,9 +17,6 @@ foreach ($keyCode as $key) {
 }
 session_start();
 $_SESSION['verifycode'] = $verifyCode;
-session_start();
-$_SESSION['verifycode'] = $verifyCode;
-
 //生成画布
 $img = imagecreatetruecolor(100,40);
 $bg_color = imagecolorallocate($img, 100,100,100);
